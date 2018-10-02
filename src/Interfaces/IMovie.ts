@@ -1,14 +1,14 @@
 export default interface IMovie {
   getId(): number,
   getTitle(): string,
-  getYear(): number
+  getYear(): string
   getRunTime(): number,
-  getGenres(): string[],
+  getGenre(): string,
   getDirector(): string,
   setTitle(title: string): void,
-  setYear(year: number): void,
+  setYear(year: string): void,
   setRunTime(runTime: number): void,
-  setGenre(genres: string[]): void,
+  setGenre(genre: string): void,
   addGenre(genre: string): void,
   setDirector(director: string): void
 }
