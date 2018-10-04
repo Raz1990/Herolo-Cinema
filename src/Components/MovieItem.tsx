@@ -26,6 +26,16 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
     };
   }
 
+  public onlyAlphabet(text: string) {
+      return text.replace(/[^A-Za-z ]/g, '');
+  }
+
+  public toProperCase(text: string) {
+    return text.replace(/\w\S*/g, (txt) => {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+  }
+
   public render() {
     let modal: any;
     
@@ -49,7 +59,7 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
       <section className='movie-item'>
         <ul>
           <li>Id: {this.props.movie.getId()}</li>
-          <li>Title: {this.props.movie.getTitle()}</li>
+          <li>Title: {this.toProperCase(this.onlyAlphabet(this.props.movie.getTitle()))}</li>
           <li>Year: {this.props.movie.getYear()}</li>
           <li>Runtime: {this.props.movie.getRunTime()}</li>
           <li>Genre: {this.props.movie.getGenre()}</li>
