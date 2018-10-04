@@ -20,14 +20,14 @@ class App extends React.Component<{},IAppState> {
   }
 
   public render() {
-    const list = (
+    const content = (
       <MoviesList moviesJSONList={this.state.moviesList}/>
     );
 
     return (
       <section id='Main'>
         <h1>Welcome to Herolo Cinema City!</h1>
-        {this.state.isLoading ? (<Loader/>) : list}
+        {this.state.isLoading ? (<Loader/>) : content}
       </section>
     );
   }

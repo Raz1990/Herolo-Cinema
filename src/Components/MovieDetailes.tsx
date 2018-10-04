@@ -8,6 +8,8 @@ import Modal from "./Modal";
 
 interface IAddProps {
   action: string,
+  newId?: number,
+  index: number,
   submitCallback: (newMovie: IMovie) => void,
   cancelCallback: () => void,
   movieItem?: IMovie,
@@ -15,9 +17,12 @@ interface IAddProps {
 
 class MovieDetails extends React.Component<IAddProps,any> {
   private runTimeWord = ' min';
-  
+  private modalArea: any;
+
   constructor(props: IAddProps){
     super(props);
+
+    this.modalArea = React.createRef();
 
     if (this.props.action === 'add') {
       this.state = {
@@ -25,7 +30,7 @@ class MovieDetails extends React.Component<IAddProps,any> {
         director: 'Sidney Lumet',
         error: '',
         genre: 'Biography, Crime, Drama',
-        id: 10,
+        id: this.props.newId,
         runtime: '125 min',
         title: 'Dog Day Afternoon',
         year: '1975',
@@ -51,30 +56,41 @@ class MovieDetails extends React.Component<IAddProps,any> {
     }
   }
 
+  public componentDidMount() {
+    Helpers.setUpKeysEvents(this.modalArea.current,'Enter',this.accept);
+    Helpers.setUpKeysEvents(this.modalArea.current,'Escape',this.props.cancelCallback);
+  }
+
+  public componentWillUnmount() {
+    Helpers.removeKeysEvents(this.modalArea.current, [this.accept,this.props.cancelCallback]);
+  }
+
   public render(){
     const justTime = this.state.runtime.substring(0, this.state.runtime.length - this.runTimeWord.length);
 
     return (
       <Modal>
-        <section className='header'>
-          <span>
-            <label>{this.props.action} a movie</label>
-          </span>
-        </section>
-        <section className='main'>
-          <label className='error'>{this.state.error}</label>
-          <ul>
-            <li>Id: {this.state.id} </li>
-            <li>Title: <input name='title' data-validatetype='string' defaultValue={this.state.title} onChange={this.handleChange} /> </li>
-            <li>Year: <input name='year' data-validatetype='number' defaultValue={this.state.year} onChange={this.handleChange} /> </li>
-            <li>Runtime (in minutes): <input name='runtime' data-validatetype='number' defaultValue={justTime} onChange={this.handleChange} /> </li>
-            <li>Genre: <input name='genre' data-validatetype='string' defaultValue={this.state.genre} onChange={this.handleChange} /> </li>
-            <li>Director: <input name='director' data-validatetype='string' defaultValue={this.state.director} onChange={this.handleChange} /> </li>
-          </ul>
-        </section>
-        <section className='buttonsWrapper'>
-          <button className='btn accept' onClick={this.accept}>{this.props.action}</button>
-          <button className='btn cancel' onClick={this.props.cancelCallback}>Cancel</button>
+        <section ref={this.modalArea}>
+          <section className='header'>
+            <span>
+              <label>{this.props.action} a movie</label>
+            </span>
+          </section>
+          <section className='main'>
+            <label className='error'>{this.state.error}</label>
+            <ul>
+              <li>Id: {this.state.id} </li>
+              <li>Title: <input name='title' data-validatetype='string' defaultValue={this.state.title} onChange={this.handleChange} /> </li>
+              <li>Year: <input name='year' data-validatetype='number' defaultValue={this.state.year} onChange={this.handleChange} /> </li>
+              <li>Runtime (in minutes): <input name='runtime' data-validatetype='number' defaultValue={justTime} onChange={this.handleChange} /> </li>
+              <li>Genre: <input name='genre' data-validatetype='string' defaultValue={this.state.genre} onChange={this.handleChange} /> </li>
+              <li>Director: <input name='director' data-validatetype='string' defaultValue={this.state.director} onChange={this.handleChange} /> </li>
+            </ul>
+          </section>
+          <section className='buttonsWrapper'>
+            <button className='btn accept' onClick={this.accept}>{this.props.action}</button>
+            <button className='btn cancel' onClick={this.props.cancelCallback}>Cancel</button>
+          </section>
         </section>
       </Modal>
     )

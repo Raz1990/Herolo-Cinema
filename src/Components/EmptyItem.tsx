@@ -2,6 +2,8 @@ import * as React from 'react';
 import '../CSS/cssButton.css';
 import '../CSS/cssEmptyItem.css';
 import IMovie from '../Interfaces/IMovie';
+import * as actions from '../Redux/actions';
+import {store} from '../Redux/store';
 import Button from './Button';
 import MovieDetailes from './MovieDetailes';
 
@@ -24,6 +26,8 @@ class EmptyItem extends React.Component<{},IEmptyItem> {
     if (this.state.showAddModal) {
       modal = <MovieDetailes  action='add'
                               cancelCallback={this.cancelModal} 
+                              index={store.getState().moviesList.length}
+                              newId={store.getState().lastIndex+1}
                               submitCallback={this.addMovie}/>;
     }
 
@@ -48,8 +52,7 @@ class EmptyItem extends React.Component<{},IEmptyItem> {
   };
 
   private addMovie = (newMovie: IMovie) => {
-    console.log('adding!');
-    console.log(newMovie);
+    store.dispatch(actions.addAMovie(newMovie));
     this.cancelModal();
   }
 }

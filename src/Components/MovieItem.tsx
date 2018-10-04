@@ -2,11 +2,14 @@ import * as React from 'react';
 import '../CSS/cssButton.css';
 import '../CSS/cssMovieItem.css';
 import IMovie from '../Interfaces/IMovie';
+import * as actions from '../Redux/actions';
+import {store} from '../Redux/store';
 import Button from './Button';
 import DeletingPanel from './DeletingPanel';
 import MovieDetailes from './MovieDetailes';
 
 interface IMovieItemProps {
+  index: number,
   movie: IMovie
 }
 
@@ -29,7 +32,8 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
     switch (this.state.panelToShow) {
       case 'edit':
         modal = <MovieDetailes  action='edit'
-                                cancelCallback={this.cancelModal} 
+                                cancelCallback={this.cancelModal}
+                                index={this.props.index} 
                                 submitCallback={this.editMovie} 
                                 movieItem={this.props.movie}/>;
         break;
@@ -81,13 +85,12 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
   }
 
   private editMovie = (editedMovie: IMovie) => {
-    console.log('editing!');
-    console.log(editedMovie);
+    store.dispatch(actions.editAMovie(editedMovie,this.props.index));
     this.cancelModal();
   }
 
   private deleteMovie = () => {
-    alert(this.props.movie.getId() + ' to be deleted');
+    store.dispatch(actions.deleteAMovie(this.props.index));;
     this.cancelModal();
   }
 }
