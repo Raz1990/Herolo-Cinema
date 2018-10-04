@@ -1,0 +1,51 @@
+.btn {
+  border: 0 solid;
+  box-shadow: 0 4px #999;
+  border-radius: 15px;
+  cursor: pointer;
+  margin: 10px;
+  outline: none;
+  padding: 10px 10px;
+}
+
+.btn:active {
+  box-shadow: 0 0px #666;
+  transform: translateY(2px);
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.disabled {
+  background: #DDDDDD;
+  color: #444753;
+  cursor: not-allowed;
+}
+
+.edit {
+  background-color: #88fffe;
+}
+
+.edit:active {
+  background-color: #6ccbca;
+}
+
+.delete, .cancel {
+  background-color: #ff554f;
+}
+
+.delete:active {
+  background-color: #cf4540;
+}
+
+.accept {
+  background-color: #16dc35;
+}
+
+.add {
+  background-color: #16dc35;
+  height: 50%;
+  border-radius: 100px;
+  font-size: xx-large;
+}
