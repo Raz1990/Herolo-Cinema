@@ -18,11 +18,13 @@ interface IAddProps {
 class MovieDetails extends React.Component<IAddProps,any> {
   private runTimeWord = ' min';
   private modalArea: any;
+  private yearInput: any;
 
   constructor(props: IAddProps){
     super(props);
 
     this.modalArea = React.createRef();
+    this.yearInput = React.createRef();
 
     if (this.props.action === 'add') {
       this.state = {
@@ -89,7 +91,7 @@ class MovieDetails extends React.Component<IAddProps,any> {
             <label className='error'>{this.state.error}</label>
             <ul>
               <li><strong>Title</strong>: <input name='title' data-validatetype='string' defaultValue={this.state.title} onChange={this.handleChange} /> </li>
-              <li><strong>Year</strong>: <input name='year' data-validatetype='number' defaultValue={this.state.year} onChange={this.handleChange} /> </li>
+              <li><strong>Year</strong>: <input ref={this.yearInput} name='year' data-validatetype='number' defaultValue={this.state.year} onChange={this.handleChange} /> </li>
               <li><strong>Runtime</strong> (in minutes): <input name='runtime' data-validatetype='number' defaultValue={justTime} onChange={this.handleChange} /> </li>
               <li><strong>Genre</strong>: <input name='genre' data-validatetype='string' defaultValue={this.state.genre} onChange={this.handleChange} /> </li>
               <li><strong>Director</strong>: <input name='director' data-validatetype='string' defaultValue={this.state.director} onChange={this.handleChange} /> </li>
@@ -106,7 +108,7 @@ class MovieDetails extends React.Component<IAddProps,any> {
 
   private handleChange = (evt: any) => {
     const validationRes = Helpers.validate(evt.target.value, evt.target.attributes['data-validatetype'].value);
-    
+ 
     this.setState((prevState: any) => ({
       ...prevState,
       error: validationRes
@@ -135,10 +137,21 @@ class MovieDetails extends React.Component<IAddProps,any> {
   }
 
   private accept = () => {
+    const validationRes = Helpers.validate(this.yearInput.current.value, 'fourLetters');
+
+    if (validationRes.length > 0) {
+      this.setState((prevState: any) => ({
+        ...prevState,
+        canSubmit: false,
+        error: validationRes
+       }));
+       return;
+    }
+
     if (!this.state.canSubmit) {
       this.setState((prevState: any) => ({
         ...prevState,
-        error: 'Every field must be filled!'
+        error: 'Every field must be filled correctly!'
        }));
       return;
     }

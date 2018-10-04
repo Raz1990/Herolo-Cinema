@@ -10,10 +10,14 @@ class Helpers {
   
   public static validate(content: any, type: string) {
     if (content.length === 0) {
-      return 'cannot accept empty string';
+      return 'cannot accept empty field';
     }
-    if (type==='number' && content.match(/^[0-9]+$/) == null ) {
+    else if (type === 'number' && content.match(/^[0-9]+$/) == null ) {
       return 'only numbers are allowed';
+    }
+    else if (type === 'fourLetters' && content.length !== 4) {
+      console.log(content.length);
+      return 'a year should contain 4 digits';
     }
     return '';
   }
