@@ -26,7 +26,9 @@ class App extends React.Component<{},IAppState> {
 
     return (
       <section id='Main'>
-        <h1>Welcome to Herolo Cinema City!</h1>
+        <section className='header'>
+          <h1>Welcome to Herolo Cinema City!</h1>
+        </section>
         {this.state.isLoading ? (<Loader/>) : content}
       </section>
     );

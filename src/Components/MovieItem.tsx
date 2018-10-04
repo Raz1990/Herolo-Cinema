@@ -18,12 +18,16 @@ interface IMovieItemState {
 }
 
 class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
+  private flipArea: any;
+
   constructor(props: IMovieItemProps) {
     super(props);
 
     this.state = {
       panelToShow: '',
     };
+
+    this.flipArea = React.createRef();
   }
 
   public render() {
@@ -46,22 +50,36 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
     }
     
     return (
-      <section className='movie-item'>
-        <ul>
-          <li>Id: {this.props.movie.getId()}</li>
-          <li>Title: {this.props.movie.getTitle()}</li>
-          <li>Year: {this.props.movie.getYear()}</li>
-          <li>Runtime: {this.props.movie.getRunTime()}</li>
-          <li>Genre: {this.props.movie.getGenre()}</li>
-          <li>Director: {this.props.movie.getDirector()}</li>
-        </ul>
-        <section className='buttons'>
-          <Button contentSTR='Edit' className={'btn edit'} callbackFunc={this.showEditModal}/>
-          <Button contentSTR='Delete' className={'btn delete'} callbackFunc={this.showDeleteModal}/>
+      <section>
+        <section className='flip-container movie-item' ref={this.flipArea} onTouchStart={this.flipTouch}>
+          <section className='flipper'>
+            <section className='front'>
+              <img src={this.props.movie.getPoster()} />
+            </section>
+            <section className='back'>
+              <ul>
+                <li><strong>Title</strong>: {this.props.movie.getTitle()}</li>
+                <li><strong>Year</strong>: {this.props.movie.getYear()}</li>
+                <li><strong>Runtime</strong>: {this.props.movie.getRunTime()}</li>
+                <li><strong>Genre</strong>: {this.props.movie.getGenre()}</li>
+                <li><strong>Director</strong>: {this.props.movie.getDirector()}</li>
+                <li><strong>Plot</strong>: {this.props.movie.getPlot()}</li>
+                <li><strong>Website</strong>: <a href={this.props.movie.getWebsite()} target="blank"> movie website </a></li>
+              </ul>
+              <section className='buttons'>
+                <Button contentSTR='Edit' className={'btn edit'} callbackFunc={this.showEditModal}/>
+                <Button contentSTR='Delete' className={'btn delete'} callbackFunc={this.showDeleteModal}/>
+              </section>
+            </section>
+          </section>
         </section>
-        {modal ? modal : <div/>}
+        {modal ? modal : null}
       </section>
     );
+  }
+
+  private flipTouch = () => {
+    this.flipArea.current.classList.toggle('hover');
   }
 
   private toggleModal = (panel:string) => {

@@ -4,7 +4,7 @@ import IMovieObj from './Interfaces/IMovieObj';
 
 class Helpers {
   public static moviefy(movieJson: IMovieObj, id: number) {
-    const movie: IMovie = new Movie(id, movieJson.Title, movieJson.Year, movieJson.Runtime, movieJson.Genre, movieJson.Director);
+    const movie: IMovie = new Movie(id, movieJson.Title, movieJson.Year, movieJson.Runtime, movieJson.Genre, movieJson.Director, movieJson.Plot, movieJson.Poster, movieJson.Website);
     return movie;
   }
   

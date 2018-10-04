@@ -42,9 +42,11 @@ class MoviesList extends React.Component<IMovieListProps,any> {
   
   public render() {
     return (
-      <section className="movie-list">
+      <section>
         <EmptyItem/>
-        {this.formatList()}
+        <section className="movie-list">
+          {this.formatList()}
+        </section>
       </section>
     );
   }

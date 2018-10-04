@@ -31,8 +31,11 @@ class MovieDetails extends React.Component<IAddProps,any> {
         error: '',
         genre: 'Biography, Crime, Drama',
         id: this.props.newId,
+        plot: 'A man robs a bank to pay for his lover\'s operation; it turns into a hostage situation and a media circus.',
+        poster: 'https://images-na.ssl-images-amazon.com/images/I/51LJe3aoe4L.jpg',
         runtime: '125 min',
         title: 'Dog Day Afternoon',
+        website: 'https://www.imdb.com/title/tt0072890/',
         year: '1975',
       };
     }
@@ -47,9 +50,15 @@ class MovieDetails extends React.Component<IAddProps,any> {
         // @ts-ignore
         id: this.props.movieItem.getId(),
         // @ts-ignore
+        plot: this.props.movieItem.getPlot(),
+        // @ts-ignore
+        poster: this.props.movieItem.getPoster(),
+        // @ts-ignore
         runtime: this.props.movieItem.getRunTime(),
         // @ts-ignore
         title: this.props.movieItem.getTitle(),
+        // @ts-ignore
+        website: this.props.movieItem.getWebsite(),
         // @ts-ignore
         year: this.props.movieItem.getYear(),
       };
@@ -79,12 +88,11 @@ class MovieDetails extends React.Component<IAddProps,any> {
           <section className='main'>
             <label className='error'>{this.state.error}</label>
             <ul>
-              <li>Id: {this.state.id} </li>
-              <li>Title: <input name='title' data-validatetype='string' defaultValue={this.state.title} onChange={this.handleChange} /> </li>
-              <li>Year: <input name='year' data-validatetype='number' defaultValue={this.state.year} onChange={this.handleChange} /> </li>
-              <li>Runtime (in minutes): <input name='runtime' data-validatetype='number' defaultValue={justTime} onChange={this.handleChange} /> </li>
-              <li>Genre: <input name='genre' data-validatetype='string' defaultValue={this.state.genre} onChange={this.handleChange} /> </li>
-              <li>Director: <input name='director' data-validatetype='string' defaultValue={this.state.director} onChange={this.handleChange} /> </li>
+              <li><strong>Title</strong>: <input name='title' data-validatetype='string' defaultValue={this.state.title} onChange={this.handleChange} /> </li>
+              <li><strong>Year</strong>: <input name='year' data-validatetype='number' defaultValue={this.state.year} onChange={this.handleChange} /> </li>
+              <li><strong>Runtime</strong> (in minutes): <input name='runtime' data-validatetype='number' defaultValue={justTime} onChange={this.handleChange} /> </li>
+              <li><strong>Genre</strong>: <input name='genre' data-validatetype='string' defaultValue={this.state.genre} onChange={this.handleChange} /> </li>
+              <li><strong>Director</strong>: <input name='director' data-validatetype='string' defaultValue={this.state.director} onChange={this.handleChange} /> </li>
             </ul>
           </section>
           <section className='buttonsWrapper'>
@@ -138,8 +146,11 @@ class MovieDetails extends React.Component<IAddProps,any> {
     const movieObj: IMovieObj = {
       Director: this.state.director,
       Genre: this.state.genre,
+      Plot: this.state.plot,
+      Poster: this.state.poster,
       Runtime: this.state.runtime,
       Title: this.state.title,
+      Website: this.state.website,
       Year: this.state.year,
     }
     const movie = Helpers.moviefy(movieObj,this.state.id);

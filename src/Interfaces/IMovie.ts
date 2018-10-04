@@ -4,6 +4,9 @@ export default interface IMovie {
   getYear(): string
   getRunTime(): string,
   getGenre(): string,
+  getPoster(): string,
+  getPlot(): string,
+  getWebsite(): string,
   getDirector(): string,
   setTitle(title: string): void,
   setYear(year: string): void,

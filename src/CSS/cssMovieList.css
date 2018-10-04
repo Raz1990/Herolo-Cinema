@@ -3,6 +3,8 @@
   flex-wrap: wrap;
   align-items: stretch;
   justify-content: space-evenly;
+  overflow-y: scroll;
+  max-height: 440px;
 }
 
 .buttons {
