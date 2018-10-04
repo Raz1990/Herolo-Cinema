@@ -1,0 +1,30 @@
+.header, .buttonsWrapper {
+  text-align: center;
+}
+
+input {
+  display: block;
+  outline: none;
+  width: 100%;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+
+.modal {
+  min-width: 25em;
+}
+
+span {
+  margin: '0 0 0.5em 0',
+}
+
+.error {
+  color: red;
+}
+
+.main ul {
+  padding: 0;
+}
