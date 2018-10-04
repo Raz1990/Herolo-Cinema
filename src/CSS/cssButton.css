@@ -49,3 +49,10 @@
   border-radius: 100px;
   font-size: xx-large;
 }
+
+/* mobile */
+@media(max-width: 1023px) {
+  .add {  
+    height: fit-content;
+  }
+}

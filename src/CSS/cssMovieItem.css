@@ -1,3 +1,10 @@
+/* mobile */
+@media(max-width: 1023px) {
+  .movie-item {
+    min-width: fit-content;
+  }
+}
+
 .movie-item {
   border: 1px solid black;
   border-radius: 20px;
