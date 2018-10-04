@@ -17,6 +17,20 @@ class Helpers {
     }
     return '';
   }
+
+  public static setUpKeysEvents(element: HTMLElement, keyPress: string, callBackFunc: () => void){
+    element.addEventListener('keydown', (event: KeyboardEvent) => {
+      if (event.key === keyPress) {
+        callBackFunc();
+      }
+    });
+  }
+
+  public static removeKeysEvents(element: HTMLElement, funcs: any){
+    for (const func of funcs) {
+      element.removeEventListener('keydown', func);  
+    }
+  }
 }
 
 export default Helpers;
