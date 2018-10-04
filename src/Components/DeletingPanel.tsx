@@ -9,18 +9,14 @@ interface IDeleteProps {
 }
 
 class DeletingPanel extends React.Component<IDeleteProps,any> {
-  private modalArea: any;
-
   constructor(props: IDeleteProps){
     super(props);
-
-    this.modalArea = React.createRef();
   }
   
   public render(){
     return (  
       <Modal>
-        <section ref={this.modalArea}>
+        <section>
           <section className='header'>
             <span>
               <label>Are you sure you want to delete this movie?</label>
