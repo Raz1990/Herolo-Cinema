@@ -4,7 +4,7 @@ import {rootReducer} from "./reducers";
 
 const initialState: IAppState = {
   lastIndex: 0,
-  moviesList: []
+  moviesList: [],
 };
 
 interface IAppStore {

@@ -2,6 +2,7 @@ import * as React from 'react';
 import './App.css';
 import EmptyItem from './Components/EmptyItem';
 import {Loader} from './Components/Loader';
+import Search from './Components/Search';
 import MoviesList from './Containers/MoviesList';
 import ServerAPI from './ServerAPI';
 
@@ -20,7 +21,7 @@ class App extends React.Component<{},IAppState> {
     }
   }
 
-  public componentWillUpdate(nextProps) {
+  public componentWillUpdate() {
     document.title = 'Herolo Cinema City';
   }
 
@@ -31,9 +32,11 @@ class App extends React.Component<{},IAppState> {
 
     return (
       <section id='full'>
-        <section className='header'>
+        <header>
+          <Search/>
           <EmptyItem/>
-        </section>
+          <span className='headerItem'/>
+        </header>
         {this.state.isLoading ? (<Loader/>) : content}
       </section>
     );

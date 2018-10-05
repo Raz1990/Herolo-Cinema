@@ -13,5 +13,7 @@ export default interface IMovie {
   setRunTime(runTime: string): void,
   setGenre(genre: string): void,
   addGenre(genre: string): void,
-  setDirector(director: string): void
+  setDirector(director: string): void,
+  setShow(val: boolean): void,
+  getShow(): boolean,
 }

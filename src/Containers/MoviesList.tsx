@@ -34,7 +34,10 @@ class MoviesList extends React.Component<IMovieListProps,any> {
 
   public formatList(){
     const formatedList = store.getState().moviesList.map((movie: IMovie, idx: any) => {
-      return <MovieItem key={idx} movie={movie} index={idx} />;
+      if (movie.getShow()) {
+        return <MovieItem key={idx} movie={movie} index={idx} />;
+      }
+      return;
     });
     return formatedList;
   }

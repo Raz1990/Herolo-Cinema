@@ -7,7 +7,7 @@ ul {
   padding: 20px;
 }
 
-input {
+ul input {
   display: block;
   outline: none;
   width: 100%;

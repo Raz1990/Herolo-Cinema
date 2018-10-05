@@ -19,8 +19,13 @@ export function rootReducer(state: IAppState, action: AnyAction): IAppState {
 }
 
 function refresh(state: IAppState) {
+  const wholeList = state.moviesList.map( (item, index) => {
+    item.setShow(true);
+    return item;  
+  });
   return {
     ...state,
+    shownMovies: wholeList,
   }
 }
 
@@ -44,12 +49,12 @@ function editAMovie(state: IAppState, payload: any): IAppState {
     if(index !== payload.location) {
         return item;
     }
-    return payload.movie;    
+    return payload.movie;
   });
 
   return {
     ...state,
-    moviesList: [...updatedList]
+    moviesList: [...updatedList],
   }
 }
 
