@@ -141,7 +141,7 @@ class MovieDetails extends React.Component<IAddProps,any> {
     let validationRes = Helpers.validate(this.yearInput.current.value, 'fourLetters');
 
     for (const storeMovie of store.getState().moviesList) {
-      if (storeMovie.getTitle() === this.state.title) {
+      if (storeMovie.getId() !== this.state.id && storeMovie.getTitle() === this.state.title) {
         validationRes = Helpers.validate('found', 'exists');
         break;
       }
