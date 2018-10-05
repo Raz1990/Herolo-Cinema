@@ -19,6 +19,9 @@ class Helpers {
       console.log(content.length);
       return 'a year should contain 4 digits';
     }
+    else if (type === 'exists') {
+      return 'A movie with this title already exists';
+    }
     return '';
   }
 

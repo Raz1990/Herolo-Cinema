@@ -17,15 +17,12 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
-}
-
-.movie-item:hover {
-  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 50%);
+  background-color: #69D2E7;
 }
 
 .movie-item ul {
   list-style: none;
+  padding: 20px;
 }
 
 .movie-item ul li {
@@ -43,7 +40,7 @@ img {
 
 .flip-container, .front, .back {
 	width: 320px;
-	height: 380px;
+	height: 400px;
 }
 
 .flipper {

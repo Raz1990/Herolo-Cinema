@@ -4,6 +4,7 @@ import '../CSS/cssModal.css';
 import Helpers from '../helpers';
 import IMovie from '../Interfaces/IMovie';
 import IMovieObj from '../Interfaces/IMovieObj';
+import {store} from '../Redux/store';
 import Modal from "./Modal";
 
 interface IAddProps {
@@ -137,7 +138,14 @@ class MovieDetails extends React.Component<IAddProps,any> {
   }
 
   private accept = () => {
-    const validationRes = Helpers.validate(this.yearInput.current.value, 'fourLetters');
+    let validationRes = Helpers.validate(this.yearInput.current.value, 'fourLetters');
+
+    for (const storeMovie of store.getState().moviesList) {
+      if (storeMovie.getTitle() === this.state.title) {
+        validationRes = Helpers.validate('found', 'exists');
+        break;
+      }
+    }
 
     if (validationRes.length > 0) {
       this.setState((prevState: any) => ({

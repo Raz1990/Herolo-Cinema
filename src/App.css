@@ -1,13 +1,20 @@
 body {
-  background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+  background-color: #F38630;
 }
 
-#Main h1 {
+#full {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#full h1 {
   text-align: center;
-  color: darkviolet;
+  margin-bottom: 0;
 }
 
 .header {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }

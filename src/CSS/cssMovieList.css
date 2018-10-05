@@ -1,10 +1,24 @@
+/* large screen */
+@media(min-height: 1000px) {
+  .movie-list {
+    align-content: space-evenly;
+  }
+}
+
+/* regular */
+@media(max-height: 999px) {
+  .movie-list {
+    align-content: space-between;
+  }
+}
+
 .movie-list {
   display: flex;
   flex-wrap: wrap;
-  align-items: stretch;
   justify-content: space-evenly;
+  min-height: 84vh;
+  max-height: 84vh;
   overflow-y: scroll;
-  max-height: 440px;
 }
 
 .buttons {

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './App.css';
+import EmptyItem from './Components/EmptyItem';
 import {Loader} from './Components/Loader';
 import MoviesList from './Containers/MoviesList';
 import ServerAPI from './ServerAPI';
@@ -19,15 +20,19 @@ class App extends React.Component<{},IAppState> {
     }
   }
 
+  public componentWillUpdate(nextProps) {
+    document.title = 'Herolo Cinema City';
+  }
+
   public render() {
     const content = (
       <MoviesList moviesJSONList={this.state.moviesList}/>
     );
 
     return (
-      <section id='Main'>
+      <section id='full'>
         <section className='header'>
-          <h1>Welcome to Herolo Cinema City!</h1>
+          <EmptyItem/>
         </section>
         {this.state.isLoading ? (<Loader/>) : content}
       </section>

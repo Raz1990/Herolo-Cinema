@@ -1,5 +1,4 @@
 import * as React from 'react';
-import EmptyItem from '../Components/EmptyItem';
 import MovieItem from '../Components/MovieItem';
 import '../CSS/cssMovieList.css';
 import Helpers from '../helpers';
@@ -42,12 +41,11 @@ class MoviesList extends React.Component<IMovieListProps,any> {
   
   public render() {
     return (
-      <section>
-        <EmptyItem/>
+      <main>
         <section className="movie-list">
           {this.formatList()}
         </section>
-      </section>
+      </main>
     );
   }
 }
