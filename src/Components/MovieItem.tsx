@@ -57,8 +57,8 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
               <img src={this.props.movie.getPoster()} />
             </section>
             <section className='back'>
+            <h2>{this.props.movie.getTitle()}</h2>
               <ul>
-                <li><strong>Title</strong>: {this.props.movie.getTitle()}</li>
                 <li><strong>Year</strong>: {this.props.movie.getYear()}</li>
                 <li><strong>Runtime</strong>: {this.props.movie.getRunTime()}</li>
                 <li><strong>Genre</strong>: {this.props.movie.getGenre()}</li>
