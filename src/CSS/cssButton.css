@@ -6,6 +6,8 @@
   margin: 10px;
   outline: none;
   padding: 10px 10px;
+  min-width: 55px;
+  min-height: 40px;
 }
 
 .btn:active {
@@ -24,27 +26,31 @@
 }
 
 .edit {
-  background-color: #88fffe;
+  background-color: #A7DBD8;
 }
 
 .edit:active {
-  background-color: #6ccbca;
+  background-color: #6ed7d1;
 }
 
 .delete, .cancel {
-  background-color: #ff554f;
+  background-color: #F38630;
 }
 
 .delete:active {
-  background-color: #cf4540;
+  background-color: #FF6630;
+}
+
+.accept-delete {
+  background-color: #F38630;
 }
 
 .accept {
-  background-color: #16dc35;
+  background-color: #78fe8e;
 }
 
 .add {
-  background-color: #16dc35;
+  background-color: #a0f0ad;
   min-width: 2em;
   min-height: 2em;
   border-radius: 100px;

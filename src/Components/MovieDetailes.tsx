@@ -100,7 +100,7 @@ class MovieDetails extends React.Component<IAddProps,any> {
           </section>
           <section className='buttonsWrapper'>
             <button className='btn accept' onClick={this.accept}>{this.props.action}</button>
-            <button className='btn cancel' onClick={this.props.cancelCallback}>Cancel</button>
+            <button className='btn' onClick={this.props.cancelCallback}>Cancel</button>
           </section>
         </section>
       </Modal>

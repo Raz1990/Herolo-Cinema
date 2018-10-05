@@ -23,8 +23,8 @@ class DeletingPanel extends React.Component<IDeleteProps,any> {
             </span>
           </section>
           <section className='buttonsWrapper'>
-            <button className='btn accept' onClick={this.delete}>Delete</button>
-            <button className='btn cancel' onClick={this.props.cancelCallback}>Cancel</button>
+            <button className='btn accept-delete' onClick={this.delete}>Delete</button>
+            <button className='btn' onClick={this.props.cancelCallback}>Cancel</button>
           </section>
         </section>
     </Modal>
