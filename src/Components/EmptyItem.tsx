@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {toast} from "react-toastify";
 import '../CSS/cssButton.css';
 import '../CSS/cssEmptyItem.css';
 import IMovie from '../Interfaces/IMovie';
@@ -53,6 +54,12 @@ class EmptyItem extends React.Component<{},IEmptyItem> {
 
   private addMovie = (newMovie: IMovie) => {
     store.dispatch(actions.addAMovie(newMovie));
+    toast.success('Movie added successfully!', {
+      autoClose: 3000,
+      hideProgressBar: true,
+      pauseOnHover: false,
+      position: toast.POSITION.TOP_RIGHT,
+    });
     this.cancelModal();
   }
 }

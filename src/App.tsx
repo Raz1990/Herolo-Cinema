@@ -1,4 +1,6 @@
 import * as React from 'react';
+import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import EmptyItem from './Components/EmptyItem';
 import {Loader} from './Components/Loader';
@@ -32,6 +34,7 @@ class App extends React.Component<{},IAppState> {
 
     return (
       <section id='full'>
+        <ToastContainer />
         <header>
           <Search/>
           <EmptyItem/>

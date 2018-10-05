@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {toast} from "react-toastify";
 import '../CSS/cssButton.css';
 import '../CSS/cssMovieItem.css';
 import IMovie from '../Interfaces/IMovie';
@@ -57,7 +58,7 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
               <img src={this.props.movie.getPoster()} />
             </section>
             <section className='back'>
-            <h2>{this.props.movie.getTitle()}</h2>
+            <h2>{this.toProperCase(this.onlyAlphabet(this.props.movie.getTitle()))}</h2>
               <ul>
                 <li><strong>Year</strong>: {this.props.movie.getYear()}</li>
                 <li><strong>Runtime</strong>: {this.props.movie.getRunTime()}</li>
@@ -76,6 +77,16 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
         {modal ? modal : null}
       </section>
     );
+  }
+
+  private onlyAlphabet(text: string) {
+    return text.replace(/[^A-Za-z ]/g, '');
+  }
+
+  private toProperCase(text: string) {
+    return text.replace(/\w\S*/g, (txt) => {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
   }
 
   private flipTouch = () => {
@@ -104,12 +115,23 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
 
   private editMovie = (editedMovie: IMovie) => {
     store.dispatch(actions.editAMovie(editedMovie,this.props.index));
+    this.showToastSuccess('Movie edited successfully!');
     this.cancelModal();
   }
 
   private deleteMovie = () => {
-    store.dispatch(actions.deleteAMovie(this.props.index));;
+    store.dispatch(actions.deleteAMovie(this.props.index));
+    this.showToastSuccess('Movie deleted successfully!');
     this.cancelModal();
+  }
+
+  private showToastSuccess(content){
+    toast.success(content, {
+      autoClose: 3000,
+      hideProgressBar: true,
+      pauseOnHover: false,
+      position: toast.POSITION.TOP_RIGHT,
+    });
   }
 }
 
