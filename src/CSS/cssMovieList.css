@@ -16,8 +16,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  min-height: 80vh;
-  max-height: 80vh;
+  min-height: 85vh;
+  max-height: 85vh;
   overflow-y: scroll;
 }
 
