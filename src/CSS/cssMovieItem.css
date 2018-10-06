@@ -5,6 +5,10 @@
   }
 }
 
+a {
+  color: white;
+}
+
 img {
   flex: 1;
   overflow: hidden;

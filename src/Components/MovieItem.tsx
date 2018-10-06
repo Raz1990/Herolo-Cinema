@@ -66,7 +66,10 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
                 <li><strong>Genre</strong>: {this.props.movie.getGenre()}</li>
                 <li><strong>Director</strong>: {this.props.movie.getDirector()}</li>
                 <li><strong>Plot</strong>: {this.props.movie.getPlot()}</li>
-                <li><strong>Website</strong>: <a href={this.props.movie.getWebsite()} target="blank"> movie website </a></li>
+                <li><strong>Website</strong>: <a href={this.props.movie.getWebsite()} 
+                                                 target="blank"> 
+                movie website <img src="/outsource.png"/>
+                </a></li>
               </ul>
               <section className='buttons'>
                 <Button contentSTR='Edit' 
