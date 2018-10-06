@@ -69,8 +69,12 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
                 <li><strong>Website</strong>: <a href={this.props.movie.getWebsite()} target="blank"> movie website </a></li>
               </ul>
               <section className='buttons'>
-                <Button contentSTR='Edit' className={'btn edit'} callbackFunc={this.showEditModal}/>
-                <Button contentSTR='Delete' className={'btn delete'} callbackFunc={this.showDeleteModal}/>
+                <Button contentSTR='Edit' 
+                        className={'btn edit'} 
+                        callbackFunc={this.showEditModal}/>
+                <Button contentSTR='Delete' 
+                        className={'btn delete'} 
+                        callbackFunc={this.showDeleteModal}/>
               </section>
             </section>
           </section>

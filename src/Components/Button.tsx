@@ -16,7 +16,7 @@ class Button extends React.Component<IButtonProps,{}> {
     return (
       <button onClick={this.props.callbackFunc} 
               className={this.props.className} 
-              disabled={this.props.disabled}>{this.props.contentSTR}</button>
+              disabled={this.props.disabled}><span>{this.props.contentSTR}</span></button>
     );
   }
 }

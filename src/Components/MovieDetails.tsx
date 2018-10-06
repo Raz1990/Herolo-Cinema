@@ -6,6 +6,7 @@ import IMovie from '../Interfaces/IMovie';
 import IMovieObj from '../Interfaces/IMovieObj';
 import {store} from '../Redux/store';
 import ServerAPI from '../ServerAPI';
+import Button from './Button';
 import Modal from "./Modal";
 
 interface IMovieDetailsProps {
@@ -132,15 +133,19 @@ class MovieDetails extends React.Component<IMovieDetailsProps,any> {
                                                  onChange={this.handleChange} /> 
               </li>
               <li><strong>Director</strong>: <input name='Director' 
-                                                   data-validatetype='string' 
-                                                   value={this.state.Director} 
-                                                   onChange={this.handleChange} /> 
+                                                    data-validatetype='string' 
+                                                    value={this.state.Director} 
+                                                    onChange={this.handleChange} /> 
               </li>
             </ul>
           </section>
           <section className='buttonsWrapper'>
-            <button className='btn accept' onClick={this.accept}>{this.props.action}</button>
-            <button className='btn' onClick={this.props.cancelCallback}>Cancel</button>
+            <Button contentSTR={this.props.action} 
+                    className='btn accept' 
+                    callbackFunc={this.accept}/>
+            <Button contentSTR='Cancel'
+                    className='btn' 
+                    callbackFunc={this.props.cancelCallback}/>
           </section>
         </section>
       </Modal>

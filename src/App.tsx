@@ -34,7 +34,7 @@ class App extends React.Component<{},IAppState> {
         <header>
           <Search/>
           <AddMovie/>
-          <span className='headerItem'/>
+          <span className='header-item right-item'/>
         </header>
         {this.state.isLoading ? (<Loader/>) : content}
       </section>

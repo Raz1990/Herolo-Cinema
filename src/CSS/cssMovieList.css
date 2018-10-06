@@ -1,14 +1,17 @@
-/* large screen */
-@media(min-height: 1024px) {
+/* desktop */
+@media(min-width: 1024px) {
   .movie-list {
-    align-content: space-evenly;
+    align-content: space-between;
+    min-height: 85vh;
+    max-height: 85vh;
   }
 }
 
-/* regular */
-@media(max-height: 1023px) {
+/* mobile */
+@media(max-width: 1023px) {
   .movie-list {
-    align-content: space-between;
+    min-height: 75vh;
+    max-height: 75vh;
   }
 }
 
@@ -16,8 +19,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  min-height: 85vh;
-  max-height: 85vh;
   overflow-y: scroll;
 }
 

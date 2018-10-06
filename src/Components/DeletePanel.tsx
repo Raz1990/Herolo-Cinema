@@ -1,6 +1,7 @@
 import * as React from 'react';
 import '../CSS/cssButton.css';
 import '../CSS/cssModal.css';
+import Button from './Button';
 import Modal from './Modal';
 
 interface IDeleteProps {
@@ -23,8 +24,12 @@ class DeletePanel extends React.Component<IDeleteProps,any> {
             </span>
           </section>
           <section className='buttonsWrapper'>
-            <button className='btn accept-delete' onClick={this.delete}>Delete</button>
-            <button className='btn' onClick={this.props.cancelCallback}>Cancel</button>
+            <Button contentSTR='Delete' 
+                    className='btn accept-delete' 
+                    callbackFunc={this.delete}/>
+            <Button contentSTR='Cancel'
+                    className='btn' 
+                    callbackFunc={this.props.cancelCallback}/>
           </section>
         </section>
     </Modal>

@@ -1,5 +1,5 @@
 /* mobile */
-@media(max-width: 1023px) {
+@media(max-width: 1024px) {
   .movie-item {
     min-width: 250px;
   }
@@ -11,13 +11,12 @@ img {
 }
 
 .movie-item {
-  border: 0.4px solid black;
   box-sizing: border-box;
   margin: 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color:white;
+  color: white;
 }
 
 .movie-item ul {
@@ -50,13 +49,9 @@ img {
   transform: rotateY(180deg);
 }
 
-.back {
-  background-color: black;
-}
-
 .flip-container, .front, .back {
 	width: 19em;
-	height: 30em;
+	height: 33em;
 }
 
 .flipper {
@@ -81,5 +76,6 @@ img {
 }
 
 .back {
+  background-color: #464646;
 	transform: rotateY(180deg);
 }
