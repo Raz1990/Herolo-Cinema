@@ -11,9 +11,10 @@ class Search extends React.Component<{},{}> {
   public render() {
     return (
       <span className='search-area'>
-      Search a movie <input className='headerItem' 
-                            placeholder='Search...' 
-                            onChange={this.filter}/>
+      <label><b>Search a movie</b></label> 
+      <input className='header-item' 
+             placeholder='Enter movie name...' 
+             onChange={this.filter}/>
       </span>
     );
   }
