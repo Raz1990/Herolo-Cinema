@@ -1,7 +1,16 @@
 import IMovie from '../Interfaces/IMovie';
 
 class Movie implements IMovie {
-  constructor(private id: number, private title:string, private year: string, private runTime:string, private genre:string, private director: string, private plot:string, private poster:string, private website: string, private show: boolean = true) {}
+  constructor(private id: number, 
+              private title:string, 
+              private year: string, 
+              private runTime:string, 
+              private genre:string, 
+              private director: string, 
+              private plot:string, 
+              private poster:string, 
+              private website: string, 
+              private show: boolean = true) {}
 
   public getId() {
     return this.id;

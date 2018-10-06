@@ -8,7 +8,7 @@ interface IDeleteProps {
   submitCallback: () => void,
 }
 
-class DeletingPanel extends React.Component<IDeleteProps,any> {
+class DeletePanel extends React.Component<IDeleteProps,any> {
   constructor(props: IDeleteProps){
     super(props);
   }
@@ -36,4 +36,4 @@ class DeletingPanel extends React.Component<IDeleteProps,any> {
   }
 }
 
-export default DeletingPanel;
+export default DeletePanel;

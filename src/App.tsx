@@ -2,7 +2,7 @@ import * as React from 'react';
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
-import EmptyItem from './Components/EmptyItem';
+import AddMovie from './Components/AddMovie';
 import {Loader} from './Components/Loader';
 import Search from './Components/Search';
 import MoviesList from './Containers/MoviesList';
@@ -23,10 +23,6 @@ class App extends React.Component<{},IAppState> {
     }
   }
 
-  public componentWillUpdate() {
-    document.title = 'Herolo Cinema City';
-  }
-
   public render() {
     const content = (
       <MoviesList moviesJSONList={this.state.moviesList}/>
@@ -37,7 +33,7 @@ class App extends React.Component<{},IAppState> {
         <ToastContainer />
         <header>
           <Search/>
-          <EmptyItem/>
+          <AddMovie/>
           <span className='headerItem'/>
         </header>
         {this.state.isLoading ? (<Loader/>) : content}
@@ -48,19 +44,18 @@ class App extends React.Component<{},IAppState> {
   public componentDidMount() {
     this.startLoading();
 
-    const serverApi = new ServerAPI();
-    const initialMoviesNames = ['guardians of the galaxy', 
+    const initialMoviesNames = ['chappie', 
                                 'guardians of the galaxy vol 2', 
-                                'Avengers', 
-                                'Avengers age of ultron', 
-                                'Avengers infinity',
-                                'Captain America the first avenger', 
-                                'Captain America the Winter Soldier', 
-                                'Captain America Civil War', 
-                                'Thor ragnarok'];
+                                'venom', 
+                                'toy story 3', 
+                                'inside out',
+                                'jurassic park', 
+                                'green mile', 
+                                'infinity war', 
+                                'thor ragnarok'];
     
     for (const movieName of initialMoviesNames) {
-      serverApi.getMovie(movieName)
+      ServerAPI.getMovie(movieName)
       .then((movieJson) => {
         this.setState((prevState: any)=>{
           return {moviesList: prevState.moviesList.concat(movieJson)};

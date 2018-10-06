@@ -1,13 +1,13 @@
 import * as React from 'react';
-import {toast} from "react-toastify";
 import '../CSS/cssButton.css';
 import '../CSS/cssMovieItem.css';
+import Helpers from '../helpers';
 import IMovie from '../Interfaces/IMovie';
 import * as actions from '../Redux/actions';
 import {store} from '../Redux/store';
 import Button from './Button';
-import DeletingPanel from './DeletingPanel';
-import MovieDetailes from './MovieDetailes';
+import DeletePanel from './DeletePanel';
+import MovieDetails from './MovieDetails';
 
 interface IMovieItemProps {
   index: number,
@@ -36,15 +36,15 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
     
     switch (this.state.panelToShow) {
       case 'edit':
-        modal = <MovieDetailes  action='edit'
-                                cancelCallback={this.cancelModal}
-                                index={this.props.index} 
-                                submitCallback={this.editMovie} 
-                                movieItem={this.props.movie}/>;
+        modal = <MovieDetails action='Edit'
+                              cancelCallback={this.cancelModal}
+                              index={this.props.index} 
+                              submitCallback={this.editMovie} 
+                              movieItem={this.props.movie}/>;
         break;
       case 'delete':
-        modal = <DeletingPanel  cancelCallback={this.cancelModal} 
-                                submitCallback={this.deleteMovie} />;
+        modal = <DeletePanel cancelCallback={this.cancelModal} 
+                             submitCallback={this.deleteMovie} />;
         break;
       default:
         modal = null;
@@ -55,7 +55,8 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
         <section className='flip-container movie-item' ref={this.flipArea} onTouchStart={this.flipTouch}>
           <section className='flipper'>
             <section className='front'>
-              <img src={this.props.movie.getPoster()} />
+              <h2>{this.toProperCase(this.onlyAlphabet(this.props.movie.getTitle()))}</h2>
+              <img src={this.props.movie.getPoster()} alt={this.props.movie.getTitle()} />
             </section>
             <section className='back'>
             <h2>{this.toProperCase(this.onlyAlphabet(this.props.movie.getTitle()))}</h2>
@@ -80,7 +81,7 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
   }
 
   private onlyAlphabet(text: string) {
-    return text.replace(/[^A-Za-z ]/g, '');
+    return text.replace(/[^A-Za-z 0-9]/g, '');
   }
 
   private toProperCase(text: string) {
@@ -115,23 +116,14 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
 
   private editMovie = (editedMovie: IMovie) => {
     store.dispatch(actions.editAMovie(editedMovie,this.props.index));
-    this.showToastSuccess('Movie edited successfully!');
+    Helpers.showToast('Movie edited successfully!' ,'good');
     this.cancelModal();
   }
 
   private deleteMovie = () => {
     store.dispatch(actions.deleteAMovie(this.props.index));
-    this.showToastSuccess('Movie deleted successfully!');
+    Helpers.showToast('Movie deleted successfully!','good');
     this.cancelModal();
-  }
-
-  private showToastSuccess(content){
-    toast.success(content, {
-      autoClose: 3000,
-      hideProgressBar: true,
-      pauseOnHover: false,
-      position: toast.POSITION.TOP_RIGHT,
-    });
   }
 }
 

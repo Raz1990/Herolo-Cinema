@@ -1,18 +1,18 @@
 import * as React from 'react';
-import {toast} from "react-toastify";
+import '../CSS/cssAddMovie.css';
 import '../CSS/cssButton.css';
-import '../CSS/cssEmptyItem.css';
+import Helpers from '../helpers';
 import IMovie from '../Interfaces/IMovie';
 import * as actions from '../Redux/actions';
 import {store} from '../Redux/store';
 import Button from './Button';
-import MovieDetailes from './MovieDetailes';
+import MovieDetails from './MovieDetails';
 
-interface IEmptyItem {
+interface IAddMovieState {
   showAddModal: boolean
 }
 
-class EmptyItem extends React.Component<{},IEmptyItem> {
+class AddMovie extends React.Component<{},IAddMovieState> {
   constructor(props: {}) {
     super(props);
 
@@ -25,11 +25,11 @@ class EmptyItem extends React.Component<{},IEmptyItem> {
     let modal: any = null;
 
     if (this.state.showAddModal) {
-      modal = <MovieDetailes  action='add'
-                              cancelCallback={this.cancelModal} 
-                              index={store.getState().moviesList.length}
-                              newId={store.getState().lastIndex+1}
-                              submitCallback={this.addMovie}/>;
+      modal = <MovieDetails action='Add'
+                            cancelCallback={this.cancelModal} 
+                            index={store.getState().moviesList.length}
+                            newId={store.getState().lastIndex+1}
+                            submitCallback={this.addMovie}/>;
     }
 
     return (
@@ -54,14 +54,9 @@ class EmptyItem extends React.Component<{},IEmptyItem> {
 
   private addMovie = (newMovie: IMovie) => {
     store.dispatch(actions.addAMovie(newMovie));
-    toast.success('Movie added successfully!', {
-      autoClose: 3000,
-      hideProgressBar: true,
-      pauseOnHover: false,
-      position: toast.POSITION.TOP_RIGHT,
-    });
+    Helpers.showToast('Movie added successfully!', 'good');
     this.cancelModal();
   }
 }
 
-export default EmptyItem;
+export default AddMovie;

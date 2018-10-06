@@ -37,32 +37,40 @@ function setAllMovies(state: IAppState, movies: IMovie[]): IAppState {
 }
 
 function addAMovie(state: IAppState, movie: IMovie): IAppState {
+  const titleList = Object.defineProperty(state.movieTitles, movie.getTitle(), {value: true, writable: true});
   return {
     ...state,
     lastIndex: state.lastIndex+1,
-    moviesList: [...state.moviesList, movie]
+    movieTitles: titleList,
+    moviesList: [...state.moviesList, movie],
   }
 }
 
 function editAMovie(state: IAppState, payload: any): IAppState {
+  let titleList;
   const updatedList = state.moviesList.map( (item, index) => {
     if(index !== payload.location) {
         return item;
     }
+    titleList = Object.defineProperty(state.movieTitles, payload.movie.getTitle(), {value: true, writable: true});
+    titleList = Object.defineProperty(state.movieTitles, item.getTitle(), {value: false, writable: true});
     return payload.movie;
   });
 
   return {
     ...state,
+    movieTitles: titleList,
     moviesList: [...updatedList],
   }
 }
 
 function deleteAMovie(state: IAppState, movieId: number): IAppState {
+  const titleList = Object.defineProperty(state.movieTitles, state.moviesList[movieId].getTitle(), {value: false, writable: true});
   return {
     ...state,
+    movieTitles: titleList,
     moviesList: [...state.moviesList.slice(0, movieId),
-                ...state.moviesList.slice(movieId + 1)]
+                ...state.moviesList.slice(movieId + 1)],
   }
 }
 

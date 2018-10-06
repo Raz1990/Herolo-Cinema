@@ -4,6 +4,7 @@ import {rootReducer} from "./reducers";
 
 const initialState: IAppState = {
   lastIndex: 0,
+  movieTitles: {},
   moviesList: [],
 };
 

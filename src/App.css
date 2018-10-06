@@ -1,16 +1,11 @@
 body {
-  background-color: #69D2E7;
+  background-color: #1f1f1f;
 }
 
 #full {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-}
-
-#full h1 {
-  text-align: center;
-  margin-bottom: 0;
 }
 
 header {
