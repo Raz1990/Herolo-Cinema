@@ -10,17 +10,17 @@ Add a movie:
 * Special characters such as $#% etc. are accepted, but will not be presented in the final product.
 
 Edit a movie:
-5) To edit a movie, first hover (on desktop) or click (on mobile) the movie poster, and you'll see the movie's information.
-6) Press the Edit button on the bottom of the movie block.
-7) A window will pop up, already filled with the movie's information. You may edit this info as you please, however, much like when adding a new movie, be aware to fill the fields with the correct value types.
-8) Press the Edit button.
-9) You will be back to the list. Reveal the information like in bullet (5), and you'll see your updates have been saved.
+1) To edit a movie, first hover (on desktop) or click (on mobile) the movie poster, and you'll see the movie's information.
+2) Press the Edit button on the bottom of the movie block.
+3) A window will pop up, already filled with the movie's information. You may edit this info as you please, however, much like when adding a new movie, be aware to fill the fields with the correct value types.
+4) Press the Edit button.
+5) You will be back to the list. Reveal the information like in bullet (1), and you'll see your updates have been saved.
 
 Delete a movie:
-10) To delete a movie, first reveal the movie's information much like in bullet (5).
-11) Press the Delete button.
-12) A window will pop up, asking you to confirm the deletion. Confirm it if you're sure.
-13) The movie is now gone from the list, and will not be visible or accesible anymore.
+1) To delete a movie, first reveal the movie's information much like in bullet (5).
+2) Press the Delete button.
+3) A window will pop up, asking you to confirm the deletion. Confirm it if you're sure.
+4) The movie is now gone from the list, and will not be visible or accesible anymore.
 
 Search for a movie:
 Simply type the movie's name, or part of it, in the search input at the top left of the screen, and the list will update on the spot.
