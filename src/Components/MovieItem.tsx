@@ -15,6 +15,7 @@ interface IMovieItemProps {
 }
 
 interface IMovieItemState {
+  flipButtonText: string,
   panelToShow: string
 }
 
@@ -25,6 +26,7 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
     super(props);
 
     this.state = {
+      flipButtonText: 'Show Details',
       panelToShow: '',
     };
 
@@ -51,25 +53,33 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
     }
     
     return (
-      <section>
-        <section className='flip-container movie-item' ref={this.flipArea} onTouchStart={this.flipTouch}>
+      <section className='whole-item'>
+        <section className='flip-container movie-item' ref={this.flipArea}>
           <section className='flipper'>
             <section className='front'>
               <h2>{this.toProperCase(this.onlyAlphabet(this.props.movie.getTitle()))}</h2>
               <img src={this.props.movie.getPoster()} alt={this.props.movie.getTitle()} />
+              <Button contentSTR={this.state.flipButtonText} 
+                      className='btn'
+                      callbackFunc={this.flipItem}/>
             </section>
             <section className='back'>
             <h2>{this.toProperCase(this.onlyAlphabet(this.props.movie.getTitle()))}</h2>
               <ul>
                 <li><strong>Year</strong>: {this.props.movie.getYear()}</li>
+                <br/>
                 <li><strong>Runtime</strong>: {this.props.movie.getRunTime()}</li>
+                <br/>
                 <li><strong>Genre</strong>: {this.props.movie.getGenre()}</li>
+                <br/>
                 <li><strong>Director</strong>: {this.props.movie.getDirector()}</li>
+                <br/>
                 <li><strong>Plot</strong>: {this.props.movie.getPlot()}</li>
-                <li><strong>Website</strong>: <a href={this.props.movie.getWebsite()} 
-                                                 target="blank"> 
-                movie website <img src="/outsource.png"/>
-                </a></li>
+                <br/>
+                <li><strong>
+                  <a href={this.props.movie.getWebsite()} target="blank"> 
+                        Click here for movie website
+                  </a></strong></li>
               </ul>
               <section className='buttons'>
                 <Button contentSTR='Edit' 
@@ -79,6 +89,9 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
                         className={'btn delete'} 
                         callbackFunc={this.showDeleteModal}/>
               </section>
+              <Button contentSTR={this.state.flipButtonText} 
+                      className='btn' 
+                      callbackFunc={this.flipItem}/>
             </section>
           </section>
         </section>
@@ -97,8 +110,14 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
     });
   }
 
-  private flipTouch = () => {
-    this.flipArea.current.classList.toggle('hover');
+  private flipItem = () => {
+    if (this.state.flipButtonText === 'Show Details') {
+      this.setState({flipButtonText: 'Hide Details'});
+    }
+    else {
+      this.setState({flipButtonText: 'Show Details'});
+    }
+    this.flipArea.current.classList.toggle('flipped');
   }
 
   private toggleModal = (panel:string) => {

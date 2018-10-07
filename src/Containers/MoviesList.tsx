@@ -44,10 +44,8 @@ class MoviesList extends React.Component<IMovieListProps,any> {
   
   public render() {
     return (
-      <main>
-        <section className="movie-list">
-          {this.formatList()}
-        </section>
+      <main className="movie-list">
+        {this.formatList()}
       </main>
     );
   }

@@ -2,21 +2,21 @@
 @media(min-width: 1024px) {
   .movie-list {
     align-content: space-between;
-    min-height: 85vh;
-    max-height: 85vh;
+    /* max-height: 85vh; */
   }
 }
 
 /* mobile */
 @media(max-width: 1023px) {
-  .movie-list {
+  /* .movie-list {
     min-height: 75vh;
     max-height: 75vh;
-  }
+  } */
 }
 
 .movie-list {
   display: flex;
+  flex: 1;
   flex-wrap: wrap;
   justify-content: space-evenly;
   overflow-y: scroll;
