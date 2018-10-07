@@ -1,12 +1,12 @@
 .btn {
   border: 0 solid;
   border-radius: 15px;
+  font-size: 1em;
   cursor: pointer;
   margin: 10px;
   outline: none;
   padding: 10px 10px;
-  min-width: 55px;
-  min-height: 40px;
+  min-width: 5em;
 }
 
 .btn:hover {
@@ -16,6 +16,7 @@
 .edit {
   background-color: #6698cb;
   color: white;
+  height: 3em;
 }
 
 .edit:active {
@@ -25,6 +26,7 @@
 .delete, .cancel {
   background-color: #fb6065;
   color: white;
+  height: 3em;
 }
 
 .delete:active {
@@ -41,8 +43,8 @@
 
 .add {
   background-color: #4a893c;
+  color: white;
   min-width: 2em;
   min-height: 2em;
   border-radius: 100px;
-  font-size: xx-large;
 }

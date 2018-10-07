@@ -33,8 +33,8 @@ class AddMovie extends React.Component<{},IAddMovieState> {
     }
 
     return (
-      <section className='empty-item'>
-        <Button contentSTR='+' className={"btn add"} callbackFunc={this.showAddModal}/>
+      <section className='add-item'>
+        <Button contentSTR='+ New Movie' className={"btn add"} callbackFunc={this.showAddModal}/>
         {modal ? modal : <div/>}
       </section>
     );

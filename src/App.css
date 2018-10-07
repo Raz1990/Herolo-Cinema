@@ -15,21 +15,7 @@ label, h2, li, p, span {
 header {
   box-sizing: border-box;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: flex-end;
   background-color: #464646;
-}
-
-/* desktop */
-@media(min-width: 1024px) {
-  header {
-    justify-content: space-around;
-  }
-}
-
-/* mobile */
-@media(max-width: 1024px) {
-  header {
-    justify-content: space-between;
-  }
 }

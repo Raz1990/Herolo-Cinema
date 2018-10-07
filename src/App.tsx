@@ -3,8 +3,8 @@ import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import AddMovie from './Components/AddMovie';
+import Filter from './Components/Filter';
 import {Loader} from './Components/Loader';
-import Search from './Components/Search';
 import MoviesList from './Containers/MoviesList';
 import ServerAPI from './ServerAPI';
 
@@ -32,9 +32,8 @@ class App extends React.Component<{},IAppState> {
       <section id='full'>
         <ToastContainer />
         <header>
-          <Search/>
+          <Filter/>
           <AddMovie/>
-          <span className='header-item right-item'/>
         </header>
         {this.state.isLoading ? (<Loader/>) : content}
       </section>

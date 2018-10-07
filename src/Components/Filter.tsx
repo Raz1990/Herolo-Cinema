@@ -1,18 +1,19 @@
 import * as React from 'react';
-import '../CSS/cssSearch.css';
+import '../CSS/cssFilter.css';
 import * as actions from '../Redux/actions';
 import {store} from '../Redux/store';
 
-class Search extends React.Component<{},{}> {
+class Filter extends React.Component<{},{}> {
   constructor(props: {}) {
     super(props);
   }
   
   public render() {
     return (
-      <span className='search-area'>
-      <label><b>Search a movie</b></label> 
-      <input className='header-item' 
+      <span className='filter-area'>
+      <label><b>Filter a movie</b></label> 
+      <input type='search' 
+             className='header-item filter-box' 
              placeholder='Enter movie name...' 
              onChange={this.filter}/>
       </span>
@@ -36,4 +37,4 @@ class Search extends React.Component<{},{}> {
   }
 }
 
-export default Search;
+export default Filter;

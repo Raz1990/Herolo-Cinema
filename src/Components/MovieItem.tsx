@@ -148,6 +148,7 @@ class MovieItem extends React.Component<IMovieItemProps,IMovieItemState> {
 
   private deleteMovie = () => {
     store.dispatch(actions.deleteAMovie(this.props.index));
+    this.flipItem();
     Helpers.showToast('Movie deleted successfully!','good');
     this.cancelModal();
   }

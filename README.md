@@ -1,7 +1,7 @@
 ﻿How to use:
 
 Add a movie:
-1) To add a movie, press the green + button in the middle top of the screen.
+1) To add a movie, press the green + Add Movie button at the top right corner of the screen.
 2) A window will pop up, with default values. You may change those values however you please, but you may not leave empty fields, or write letters in number-based fields
 3) When you're done filling up the fields, press the Add button. 
 4) The movie has been added to the database, and will appear at the end of the list at the bottom of the page.
@@ -22,5 +22,5 @@ Delete a movie:
 3) A window will pop up, asking you to confirm the deletion. Confirm it if you're sure.
 4) The movie is now gone from the list, and will not be visible or accesible anymore.
 
-Search for a movie:
-Simply type the movie's name, or part of it, in the search input at the top left of the screen, and the list will update on the spot.
+Filter movies:
+Simply type the movie's name, or part of it, in the filter input at the top left of the screen, and the list will update on the spot.
