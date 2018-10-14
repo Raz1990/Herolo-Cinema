@@ -6,6 +6,7 @@ import AddMovie from './Components/AddMovie';
 import Filter from './Components/Filter';
 import {Loader} from './Components/Loader';
 import MoviesList from './Containers/MoviesList';
+import IMovieObj from './Interfaces/IMovieObj';
 import ServerAPI from './ServerAPI';
 
 interface IAppState {
@@ -60,6 +61,7 @@ class App extends React.Component<{},IAppState> {
           return {moviesList: prevState.moviesList.concat(movieJson)};
         });
         if (this.state.moviesList.length === initialMoviesNames.length) {
+          this.state.moviesList.sort(this.movieSort);
           this.changeLoading();
         }
       });
@@ -71,6 +73,16 @@ class App extends React.Component<{},IAppState> {
       ...prevState,
       isLoading: !prevState.isLoading
      }));
+  }
+
+  private movieSort(a: IMovieObj, b: IMovieObj) {
+    if (a.Title < b.Title) {
+      return -1;
+    }
+    if (a.Title > b.Title) {
+      return 1;
+    }
+    return 0;
   }
 }
 
