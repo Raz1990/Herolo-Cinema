@@ -9,7 +9,7 @@ import MoviesList from './Containers/MoviesList';
 import ServerAPI from './ServerAPI';
 
 interface IAppState {
-  isLoading: number,
+  isLoading: boolean,
   moviesList: []
 }
 
@@ -18,7 +18,7 @@ class App extends React.Component<{},IAppState> {
     super(props);
 
     this.state = {
-      isLoading: 0,
+      isLoading: false,
       moviesList: []
     }
   }
@@ -41,7 +41,7 @@ class App extends React.Component<{},IAppState> {
   }
 
   public componentDidMount() {
-    this.startLoading();
+    this.changeLoading();
 
     const initialMoviesNames = ['chappie', 
                                 'guardians of the galaxy vol 2', 
@@ -60,24 +60,17 @@ class App extends React.Component<{},IAppState> {
           return {moviesList: prevState.moviesList.concat(movieJson)};
         });
         if (this.state.moviesList.length === initialMoviesNames.length) {
-          this.stopLoading();
+          this.changeLoading();
         }
       });
     }
   }
 
-  private startLoading() {
+  private changeLoading() {
     this.setState((prevState: IAppState) => ({
       ...prevState,
-      isLoading: ++prevState.isLoading
+      isLoading: !prevState.isLoading
      }));
-    }
-
-  private stopLoading() {
-  this.setState((prevState: IAppState) => ({
-      ...prevState,
-      isLoading: --prevState.isLoading
-    }));
   }
 }
 
